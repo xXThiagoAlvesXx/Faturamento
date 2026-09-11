@@ -340,7 +340,9 @@ function curto(v){
 const soma = arr => Math.round(arr.reduce((s,x)=>s+x.v,0)*100)/100;  // arredonda só no total, como o Excel
 const esc = s => String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
-const PENDENTES = ['Aguardando Faturamento','Aguardando Aprovação','Aguardando Estorno','BM Não Enviado','Aprovado para Liberação','Sem status'];
+// Pendente = só o que já foi enviado e ainda aguarda faturamento.
+// 'Aguardando Aprovação' e afins ficam de fora: ainda não são pendência de faturar.
+const PENDENTES = ['Aguardando Faturamento'];
 
 function carregar(pack){
   PACK = pack;
